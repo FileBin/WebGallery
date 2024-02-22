@@ -1,0 +1,11 @@
+[submodule "Filebin.Common"]
+	path = Filebin.Common
+	url = https://github.com/FileBin/Filebin.Common.git
+
+[submodule "Filebin.AuthServer"]
+	path = Filebin.AuthServer
+	url = https://github.com/FileBin/Filebin.AuthServer.git
+
+[submodule "Filebin.Domain.Auth"]
+	path = Filebin.Domain/Auth
+	url = https://github.com/FileBin/Filebin.Domain.Auth.git

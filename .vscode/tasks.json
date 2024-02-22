@@ -1,0 +1,31 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+        {
+            "label": "Build Solution",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/WebGallery.sln",
+                "/property:GenerateFullPaths=true"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "Start Filebin.AuthServer",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "run",
+                "--project",
+                "${workspaceFolder}/Filebin.AuthServer/Filebin.AuthServer.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        }
+    ]
+}
