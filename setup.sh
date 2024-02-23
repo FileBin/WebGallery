@@ -4,6 +4,14 @@ gen_random_string() {
     cat /dev/urandom | base64 -w 0 | head -c$1
 }
 
+set -e
+
+INTERACTIVE=true
+
+if [[ $* == *--non-interactive* ]]; then
+    INTERACTIVE=false
+fi
+
 # change directory to script location
 cd "${0%/*}"
 
@@ -27,13 +35,18 @@ if [ -z "$SECRETS_ID" ]; then
 fi
 
 if [ -z "$ADMIN_PASSWORD" ]; then
-    echo "Enter admin user password [autogenerate]:"
-    read ADMIN_PASSWORD
-        if [ -z "$ADMIN_PASSWORD" ]; then
-        ADMIN_PASSWORD="$(gen_random_string 12)"
-        echo "admin user password is: $ADMIN_PASSWORD"
+    if [ $INTERACTIVE = true ]; then
+        echo "Enter admin user password [autogenerate]:"
+        read ADMIN_PASSWORD
+        echo "ADMIN_PASSWORD=\"$ADMIN_PASSWORD\"" >> "$CACHE_FILE"
     fi
-    echo "ADMIN_PASSWORD=\"$ADMIN_PASSWORD\"" >> "$CACHE_FILE"
+
+    if [ -z "$ADMIN_PASSWORD" ]; then
+        ADMIN_PASSWORD="$(gen_random_string 12)"
+        if [ $INTERACTIVE = true ]; then
+            echo "admin user password is: $ADMIN_PASSWORD"
+        fi
+    fi
 fi
 
 if [ -z "$SECURITY_KEY" ]; then
@@ -42,48 +55,67 @@ if [ -z "$SECURITY_KEY" ]; then
 fi
 
 if [ -z "$DB_ROOT_PASSWORD" ]; then
-    echo "Enter database root password [autogenerate]:"
-    read DB_ROOT_PASSWORD
+
+    if [ $INTERACTIVE = true ]; then
+        echo "Enter database root password [autogenerate]:"
+        read DB_ROOT_PASSWORD
+    fi
+
     if [ -z "$DB_ROOT_PASSWORD" ]; then
         DB_ROOT_PASSWORD="$(gen_random_string 18)"
-        echo "DB_ROOT_PASSWORD is: $DB_ROOT_PASSWORD"
+        if [ $INTERACTIVE = true ]; then
+            echo "DB_ROOT_PASSWORD is: $DB_ROOT_PASSWORD"
+        fi
     fi
+
     echo "DB_ROOT_PASSWORD=\"$DB_ROOT_PASSWORD\"" >> "$CACHE_FILE"
 fi
 
 if [ -z "$DB_USER" ]; then
-    echo "Enter database user name [innoshop]:"
-    read DB_USER
-    if [ -z "$DB_USER" ]; then
-        DB_USER="innoshop"
+    if [ $INTERACTIVE = true ]; then
+        echo "Enter database user name [auth_api]:"
+        read DB_USER
     fi
+    if [ -z "$DB_USER" ]; then
+        DB_USER="auth_api"
+    fi
+
     echo "DB_USER=\"$DB_USER\"" >> "$CACHE_FILE"
 fi
 
 if [ -z "$DB_PASSWORD" ]; then
-    echo "Enter database password [autogenerate]:"
-    read DB_PASSWORD
+    if [ $INTERACTIVE = true ]; then
+        echo "Enter database password [autogenerate]:"
+        read DB_PASSWORD
+    fi
+
     if [ -z "$DB_PASSWORD" ]; then
         DB_PASSWORD="$(gen_random_string 18)"
+
     fi
+
     echo "DB_PASSWORD=\"$DB_PASSWORD\"" >> "$CACHE_FILE"
 fi
 
 if [ -z "$SMTP_USER" ]; then
-    echo "Enter SMTP user (or email):"
-    read SMTP_USER
+    if [ $INTERACTIVE = true ]; then
+        echo "Enter SMTP user (or email):"
+        read SMTP_USER
+    fi
     echo "SMTP_USER=\"$SMTP_USER\"" >> "$CACHE_FILE"
 fi
 
 if [ -z "$SMTP_PASSWORD" ]; then
-    echo "Enter SMTP user password:"
-    read SMTP_PASSWORD
+    if [ $INTERACTIVE = true ]; then
+        echo "Enter SMTP user password:"
+        read SMTP_PASSWORD
+    fi
+
     echo "SMTP_PASSWORD=\"$SMTP_PASSWORD\"" >> "$CACHE_FILE"
 fi
 
 # init same secrets for both projects
-dotnet user-secrets init --project InnoShop.UserManagerAPI --id "$SECRETS_ID"
-dotnet user-secrets init --project InnoShop.ProductManagerAPI --id "$SECRETS_ID"
+dotnet user-secrets init --project Filebin.AuthServer --id "$SECRETS_ID"
 
 # set secrets content
 cat <<EOF | dotnet user-secrets set --id "$SECRETS_ID"

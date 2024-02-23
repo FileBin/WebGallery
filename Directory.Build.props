@@ -7,4 +7,8 @@
     <BaseOutputPath>$(MSBuildProjectDirectory)/.build/bin/</BaseOutputPath>
     <BaseIntermediateOutputPath>$(MSBuildProjectDirectory)/.build/obj/</BaseIntermediateOutputPath>
   </PropertyGroup>
+  
+  <PropertyGroup>
+    <UserSecretsId>6ebe63f4-0bd7-4062-8ac9-fd0556500109</UserSecretsId>
+  </PropertyGroup>
 </Project>

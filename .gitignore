@@ -1,5 +1,6 @@
 ## My files
 /build
+/azurite
 obj
 bin
 .private

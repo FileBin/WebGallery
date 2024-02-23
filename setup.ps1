@@ -19,7 +19,10 @@ $CACHE_FILE = '.private\cache.sh'
 # Get variables from cache file
 if (Test-Path $CACHE_FILE) {
   Get-Content $CACHE_FILE | foreach {
-    $name, $value = $_.split('=')
+    $array = $_.split('=')
+    $name = $array[0]
+    $value = ($array[1..($array.Length -1)] -join "=")
+    
     if ([string]::IsNullOrWhiteSpace($name) || $name.Contains('#')) {
       continue
     }
@@ -57,9 +60,9 @@ if (-not $env:DB_ROOT_PASSWORD) {
 }
 
 if (-not $env:DB_USER) {
-    $env:DB_USER = Read-Host "Enter database user name [innoshop]:"
+    $env:DB_USER = Read-Host "Enter database user name [auth_api]:"
     if (-not $env:DB_USER) {
-        $env:DB_USER = "innoshop"
+        $env:DB_USER = "auth_api"
     }
     Add-Content -Path $CACHE_FILE -Value "DB_USER=`"$env:DB_USER`""
 }
@@ -83,8 +86,7 @@ if (-not $env:SMTP_PASSWORD) {
 }
 
 # Initialize same secrets for both projects
-dotnet user-secrets init --project InnoShop.UserManagerAPI --id $env:SECRETS_ID
-dotnet user-secrets init --project InnoShop.ProductManagerAPI --id $env:SECRETS_ID
+dotnet user-secrets init --project Filebin.AuthServer --id $env:SECRETS_ID
 
 # Set secrets content
 @"
@@ -99,12 +101,12 @@ dotnet user-secrets init --project InnoShop.ProductManagerAPI --id $env:SECRETS_
 "@ | dotnet user-secrets set --id $env:SECRETS_ID
 
 @"
-Database__User="$env:DB_USER"
-Database__Password="$env:DB_PASSWORD"
-JwtSecurityKey="$env:SECURITY_KEY"
-SMTP__User="$env:SMTP_USER"
-SMTP__Password="$env:SMTP_PASSWORD"
-AdminDefaultPassword="$env:ADMIN_PASSWORD"
+Database__User=$env:DB_USER
+Database__Password=$env:DB_PASSWORD
+JwtSecurityKey=$env:SECURITY_KEY
+SMTP__User=$env:SMTP_USER
+SMTP__Password=$env:SMTP_PASSWORD
+AdminDefaultPassword=$env:ADMIN_PASSWORD
 "@ | Set-Content -Path $SECRETS_ENV
 
 # Write passwords into database.env file
