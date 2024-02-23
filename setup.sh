@@ -8,7 +8,7 @@ set -e
 
 INTERACTIVE=true
 
-if [[ $* == *--non-interactive* ]]; then
+if [[ $- != *i* ]]; then
     INTERACTIVE=false
 fi
 
