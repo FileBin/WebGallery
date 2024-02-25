@@ -1,0 +1,10 @@
+@use '@angular/material' as mat;
+@include mat.core();
+
+.the-dense-zone {
+    @include mat.form-field-density(-4);
+}
+
+:host ::ng-deep .mdc-text-field {
+    border-radius: 1em;
+}

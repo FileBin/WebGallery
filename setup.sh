@@ -8,7 +8,7 @@ set -e
 
 INTERACTIVE=true
 
-if [[ $- != *i* ]]; then
+if [[ $* == *--non-interactive* ]]; then
     INTERACTIVE=false
 fi
 
@@ -38,7 +38,6 @@ if [ -z "$ADMIN_PASSWORD" ]; then
     if [ $INTERACTIVE = true ]; then
         echo "Enter admin user password [autogenerate]:"
         read ADMIN_PASSWORD
-        echo "ADMIN_PASSWORD=\"$ADMIN_PASSWORD\"" >> "$CACHE_FILE"
     fi
 
     if [ -z "$ADMIN_PASSWORD" ]; then
@@ -47,6 +46,8 @@ if [ -z "$ADMIN_PASSWORD" ]; then
             echo "admin user password is: $ADMIN_PASSWORD"
         fi
     fi
+    
+    echo "ADMIN_PASSWORD=\"$ADMIN_PASSWORD\"" >> "$CACHE_FILE"
 fi
 
 if [ -z "$SECURITY_KEY" ]; then

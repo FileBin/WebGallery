@@ -5,6 +5,7 @@
         "Newtonsoft",
         "Npgsql",
         "Npsql",
-        "Swashbuckle"
+        "Swashbuckle",
+        "webgallery"
     ]
 }

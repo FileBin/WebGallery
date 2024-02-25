@@ -1,0 +1,48 @@
+mat-drawer {
+    position: fixed;
+}
+
+.content {
+    margin-top: var(--header-height);
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3em;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+
+    gap: 1em;
+
+    align-items: stretch;
+
+    width: 300px;
+    padding: 1em;
+
+
+    button {
+        font-weight: normal;
+        display: flex;
+        justify-content: start;
+
+        padding: 2em;
+    }
+}
+
+@media (min-width: 701px) {
+    app-search {
+        display: none;
+    }
+}
+
+app-search {
+    margin: auto;
+}
+
+:host ::ng-deep .search {
+    width: fit-content;
+}
