@@ -1,8 +1,10 @@
-<mat-drawer-container [hasBackdrop]="true">
-    <mat-drawer #drawer mode="over">
+<mat-drawer-container [hasBackdrop]="false" (touchstart)="swipe($event, 'start')" (touchend)="swipe($event, 'end')">
+    <mat-drawer #drawer mode="over" [autoFocus]="false">
         <div class="sidebar content">
-            <section>
+            <section class="search-section">
                 <app-search></app-search>
+            </section>
+            <section>
                 <button mat-button class="item">
                     <mat-icon>home</mat-icon>
                     Home
@@ -43,7 +45,7 @@
             </section>
         </div>
     </mat-drawer>
-    <div class="content">
+    <div class="content margin-auto">
         <ng-content></ng-content>
     </div>
 </mat-drawer-container>

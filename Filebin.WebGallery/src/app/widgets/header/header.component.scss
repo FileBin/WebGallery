@@ -13,7 +13,9 @@ mat-toolbar {
     display: flex;
     flex-direction: row;
 
-    gap: 1em;
+    gap: min(1em, 1vw);
+
+    padding: 0 min(1em, 2vw);
 }
 
 mat-icon {
@@ -29,4 +31,10 @@ mat-icon {
     app-search {
         display: none;
     }
+}
+
+
+a {
+    color: unset;
+    text-decoration: none;
 }

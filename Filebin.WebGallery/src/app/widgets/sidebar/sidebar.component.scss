@@ -3,7 +3,11 @@ mat-drawer {
 }
 
 .content {
+    margin: auto;
+
     margin-top: var(--header-height);
+    max-width: 1200px;
+    padding: 1em;
 }
 
 section {
@@ -34,7 +38,7 @@ section {
 }
 
 @media (min-width: 701px) {
-    app-search {
+    .search-section {
         display: none;
     }
 }

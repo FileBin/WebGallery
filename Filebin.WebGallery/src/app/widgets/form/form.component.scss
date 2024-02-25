@@ -1,0 +1,9 @@
+mat-card {
+    width: 300px;
+}
+
+mat-card-actions {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5em;
+}

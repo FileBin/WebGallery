@@ -1,9 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+@include mat.core();
 
+@import 'theme.scss';
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 :root {
     --header-height: 60px;
+}
+
+a {
+    color: mat.get-theme-color($theme, accent, default);
+}
+
+.margin-auto {
+    margin: auto;
+}
+
+.vertical-center {
+    margin-top: calc(50vh - var(--header-height));
+    transform: translate(0, -50%);
 }

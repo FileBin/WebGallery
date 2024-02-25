@@ -18,8 +18,11 @@ $light-theme: mat.define-light-theme((color: (primary: $my-primary,
             typography: mat.define-typography-config(),
         ));
 
+$theme: $dark-theme;
+
 @include mat.all-component-themes($dark-theme);
 
 @media (prefers-color-scheme: light) {
+    $theme: $light-theme;
     @include mat.all-component-themes($light-theme);
 }

@@ -3,7 +3,7 @@
         <button mat-icon-button (click)="toggleSidenav.emit()">
             <mat-icon>menu</mat-icon>
         </button>
-        <span>{{appName}}</span>
+        <a [routerLink]="['/']">{{appName}}</a>
         <span class="spacer"></span>
 
 
@@ -11,8 +11,6 @@
 
 
         <span class="spacer"></span>
-        <button mat-icon-button>
-            <mat-icon>account_circle</mat-icon>
-        </button>
+        <app-user-info></app-user-info>
     </mat-toolbar>
 </header>

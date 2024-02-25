@@ -1,0 +1,22 @@
+<div class="container">
+    @if (isLoading) {
+
+    <mat-spinner [diameter]="30" style="margin:0 auto;"></mat-spinner>
+
+    } @else {
+
+    @if(isLoggedIn()) {
+    <button mat-icon-button>
+        <mat-icon>account_circle</mat-icon>
+    </button>
+    } @else {
+    <button mat-stroked-button [routerLink]="['/login']">
+        Login
+    </button>
+    <button mat-raised-button [routerLink]="['/register']">
+        Register
+    </button>
+    }
+    
+    }
+</div>
