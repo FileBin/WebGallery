@@ -7,7 +7,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { isPlatformBrowser } from '@angular/common';
 
 import { environment as env } from '../environments/environment';
-import { provideHttpClient } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { JwtInterceptor } from './middleware/jwt.interceptor';
 
 export function getBaseUrl() {
   if (isPlatformBrowser(PLATFORM_ID)) {
@@ -19,10 +20,6 @@ export function getBaseUrl() {
 
 export function getUserApiUrl() {
   var host = getBaseUrl();
-
-  if (env.isDevelopment) {
-    host = 'http://localhost:5294/';
-  }
 
   return `${host}api/accounts`;
 }
@@ -37,7 +34,12 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideClientHydration(),
     provideAnimationsAsync(),
+    provideHttpClient(withInterceptorsFromDi()),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true,
+    },
     ...staticProviders,
-    provideHttpClient(),
   ]
 };

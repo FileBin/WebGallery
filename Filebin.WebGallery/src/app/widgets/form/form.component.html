@@ -1,9 +1,19 @@
 <mat-card class="field margin-auto">
+
     <mat-card-header>
         <mat-card-title> {{ title }} </mat-card-title>
     </mat-card-header>
 
+    <ng-content></ng-content>
+
+    @if(message.length > 0) {
+    <pre>{{ message }}</pre>
+    }
+
     <mat-card-actions>
-        <button mat-button>SUBMIT</button>
+        @if (this.loading) {
+        <mat-spinner [diameter]="30" style="margin:0 auto;"></mat-spinner>
+        }
+        <button mat-button (click)="this.onSubmit()" type="submit">SUBMIT</button>
     </mat-card-actions>
 </mat-card>

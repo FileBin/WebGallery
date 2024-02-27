@@ -5,10 +5,19 @@
 
     } @else {
 
-    @if(isLoggedIn()) {
-    <button mat-icon-button>
-        <mat-icon>account_circle</mat-icon>
-    </button>
+    @if(isLoggedIn) {
+    <div>
+        <button mat-button (click)="isExpanded = !isExpanded">
+            <mat-icon>account_circle</mat-icon>
+            <div class="username">
+                {{ userInfo?.username }}
+            </div>
+        </button>
+
+        @if(isExpanded) {
+        <app-user-menu />
+        }
+    </div>
     } @else {
     <button mat-stroked-button [routerLink]="['/login']">
         Login
@@ -17,6 +26,6 @@
         Register
     </button>
     }
-    
+
     }
 </div>

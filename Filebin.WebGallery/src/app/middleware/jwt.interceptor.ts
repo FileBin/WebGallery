@@ -11,13 +11,15 @@ import { AuthStateProviderService } from '../services/auth-state-provider.servic
 import { jwtDecode } from 'jwt-decode';
 import { UserApiProxyService } from '../services/user-api-proxy.service';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class JwtInterceptor implements HttpInterceptor {
 
   constructor(private authStateProvider: AuthStateProviderService,
     private userApi: UserApiProxyService) { }
 
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let access_token = this.authStateProvider.access_token;
 
     if (access_token && !request.headers.has('Authorization')) {

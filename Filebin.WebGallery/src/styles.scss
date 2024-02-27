@@ -30,3 +30,7 @@ a {
     margin-top: calc(50vh - var(--header-height));
     transform: translate(0, -50%);
 }
+
+.full-width {
+    width: 100%;
+}

@@ -1,0 +1,11 @@
+<mat-form-field class="full-width">
+    <mat-label>{{ label }}</mat-label>
+    <input type="email" matInput [formControl]="formControl" [errorStateMatcher]="matcher"
+        placeholder="{{placeholder}}">
+
+    @if (formControl.hasError('required')) {
+    <mat-error>{{ label }} is <strong>required</strong></mat-error>
+    } @else if (formControl.hasError('email')) {
+    <mat-error>Please enter a valid email address</mat-error>
+    }
+</mat-form-field>

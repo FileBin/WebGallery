@@ -2,21 +2,21 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Inject, Injectable, InjectionToken } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { AuthStateProviderService } from './auth-state-provider.service';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserApiProxyService {
-  headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
+  headers = new HttpHeaders()
+    .set('Content-Type', 'application/json; charset=utf-8');
 
   constructor(private http: HttpClient,
     @Inject('USER_API_URL') private userApiUrl: string,
-    private authStateProvider: AuthStateProviderService) {
-
-  }
+    private authStateProvider: AuthStateProviderService) { }
 
   login(dto: LoginDto): Observable<void> {
-    return this.http.post<LoginResultDto>(`${this.userApiUrl}/login`, dto)
+    return this.http.post<LoginResultDto>(`${this.userApiUrl}/login`, dto, { headers: this.headers })
       .pipe(
         map(result => {
           this.authStateProvider.access_token = result.accessToken;
@@ -26,7 +26,7 @@ export class UserApiProxyService {
   }
 
   register(dto: RegisterDto): Observable<void> {
-    return this.http.post<void>(`${this.userApiUrl}/register`, dto);
+    return this.http.post<void>(`${this.userApiUrl}/register`, dto, { headers: this.headers });
   }
 
   forgotPassword(email: string): Observable<void> {
@@ -34,11 +34,11 @@ export class UserApiProxyService {
   }
 
   resetPassword(email: ResetPasswordDto): Observable<void> {
-    return this.http.post<void>(`${this.userApiUrl}/reset_password`, email);
+    return this.http.post<void>(`${this.userApiUrl}/reset_password`, email, { headers: this.headers });
   }
 
   userInfo(): Observable<UserInfoDto> {
-    return this.http.get<UserInfoDto>(`${this.userApiUrl}/info`);
+    return this.http.get<UserInfoDto>(`${this.userApiUrl}/info`, { headers: this.headers });
   }
 
   resend(email: string): Observable<void> {
@@ -47,7 +47,7 @@ export class UserApiProxyService {
 
   refreshToken(): Observable<void> {
     var headers = new HttpHeaders().set('Authorization', `Bearer ${this.authStateProvider.refresh_token}`);
-
+    
     return this.http.get<LoginResultDto>(`${this.userApiUrl}/refresh_token`, { headers: headers })
       .pipe(
         map(result => {

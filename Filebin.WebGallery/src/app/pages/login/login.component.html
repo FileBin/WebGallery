@@ -1,4 +1,6 @@
 <div class="vertical-center">
-    <app-form [title]="'Login'">
+    <app-form [title]="'Login'" [formGroup]="form" [sendRequestProcessor]="send" (complete)="onSuccess()">
+        <app-login-field #login [formControl]="f.login"></app-login-field>
+        <app-password-field #password [formControl]="f.password"></app-password-field>
     </app-form>
 </div>
