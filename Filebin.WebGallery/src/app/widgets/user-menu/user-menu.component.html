@@ -1,8 +1,35 @@
-<mat-card>
-    <p>user-menu works!</p>
-
-    <mat-card-actions>
-        <button mat-button (click)="logout()">LOGOUT</button>
-    </mat-card-actions>
+<mat-card class="mat-body-1">
+    <section class="row account">
+        <mat-icon class="margin-auto">account_circle</mat-icon>
+        <div class="column">
+            <div>{{ userInfo.email }}</div>
+            <div>{{ userInfo.username }}</div>
+        </div>
+    </section>
+    <mat-divider />
+    <section class="column">
+        <button mat-button class="item">
+            <mat-icon>favorite</mat-icon>
+            <div>Liked</div>
+        </button>
+    </section>
+    <mat-divider />
+    <section class="column">
+        <button mat-button class="item">
+            <mat-icon>add_box</mat-icon>
+            <div>Upload</div>
+        </button>
+        <button mat-button class="item">
+            <mat-icon>space_dashboard</mat-icon>
+            <div>Your Posts</div>
+        </button>
+    </section>
+    <mat-divider />    
+    <section class="column">
+        <button mat-button (click)="logout()" class="item">
+            <mat-icon>logout</mat-icon>
+            LOGOUT
+        </button>
+    </section>
 </mat-card>
 

@@ -11,9 +11,9 @@
     }
 
     <mat-card-actions>
+        <button mat-button (click)="this.onSubmit()" type="submit">SUBMIT</button>
         @if (this.loading) {
         <mat-spinner [diameter]="30" style="margin:0 auto;"></mat-spinner>
         }
-        <button mat-button (click)="this.onSubmit()" type="submit">SUBMIT</button>
     </mat-card-actions>
 </mat-card>
