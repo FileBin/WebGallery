@@ -18,6 +18,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 export class FormComponent extends ApiRequestForm {
   @Input({ required: true }) formGroup!: AbstractControl;
   @Input({ required: true }) sendRequestProcessor!: () => Observable<void>;
+  @Input() validationProcessor = () => { return true; };
   @Output() complete = new EventEmitter<void>();
 
   public override get form(): AbstractControl {
@@ -26,6 +27,10 @@ export class FormComponent extends ApiRequestForm {
 
   public override sendRequest(): Observable<void> {
     return this.sendRequestProcessor();
+  }
+
+  public override isValid(): boolean {
+      return super.isValid() && this.validationProcessor();
   }
 
   public override onComplete(): void {

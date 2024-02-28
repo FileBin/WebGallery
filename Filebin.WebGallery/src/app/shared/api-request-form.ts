@@ -10,9 +10,13 @@ export abstract class ApiRequestForm {
 
   public abstract sendRequest(): Observable<void>;
 
+  protected isValid() {
+    return !this.form.invalid;
+  }
+
   public onSubmit() {
     // stop here if form is invalid
-    if (this.form.invalid) {
+    if (!this.isValid()) {
       return;
     }
 

@@ -1,0 +1,11 @@
+<mat-form-field class="full-width">
+    <mat-label>{{ label }}</mat-label>
+    <input type="text" matInput [formControl]="formControl" [errorStateMatcher]="matcher"
+        placeholder="{{ placeholder }}" name="username" autocomplete="username" autofill>
+
+    @if (formControl.hasError('required')) {
+    <mat-error>{{ label }} is <strong>required</strong></mat-error>
+    } @else if (formControl.hasError('minlength')) {
+    <mat-error>{{ label }} must be at least 3 characters</mat-error>
+    }
+</mat-form-field>

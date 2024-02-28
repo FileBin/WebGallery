@@ -1,1 +1,8 @@
-<p>register works!</p>
+<div class="vertical-center">
+    <app-form [title]="'Register'" [formGroup]="form" [sendRequestProcessor]="send" (complete)="onSuccess()" [validationProcessor]="validate">
+        <app-email-field #email [formControl]="f.email"></app-email-field>
+        <app-username-field #username [formControl]="f.username"></app-username-field>
+        <app-password-field #password [formControl]="f.password" [autocomplete]="'new-password'"></app-password-field>
+        <app-password-field #retype_password [formControl]="f.retype_password" [label]="'Retype password'" [name]="'retype_password'" [autocomplete]="'new-password'"></app-password-field>
+    </app-form>
+</div>
