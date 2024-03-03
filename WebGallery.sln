@@ -23,6 +23,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Filebin.Domain.Auth.Abstrac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Filebin.Domain.Auth.Models", "Filebin.Domain\Auth\Models\Filebin.Domain.Auth.Models.csproj", "{FC565EBB-4826-424A-B8CE-9D099597685C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Filebin.WebGalleryAPI", "Filebin.WebGalleryAPI\Filebin.WebGalleryAPI.csproj", "{9AE11FD2-D6DC-40C8-9F87-4175097EFA34}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Filebin.Domain.Azure.Blob.Abstraction", "Filebin.Domain\Azure\Blob\Abstraction\Filebin.Domain.Azure.Blob.Abstraction.csproj", "{C0824447-0B0B-4B0E-873C-14EE2BE3E50A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Filebin.Common.Azure.Blob", "Filebin.Common\Azure\Blob\Filebin.Common.Azure.Blob.csproj", "{0A124BB8-1C76-4AAB-A403-429547EB309D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Filebin.Domain.WebGallery", "Filebin.Domain\WebGallery\Filebin.Domain.WebGallery.csproj", "{B3F3AFB0-8F59-445D-B935-00EC51E49C08}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Filebin.Common.Auth", "Filebin.Common\Auth\Filebin.Common.Auth.csproj", "{C89CEBC6-CD1C-4601-BEA5-9F3C6BC8D231}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +71,26 @@ Global
 		{FC565EBB-4826-424A-B8CE-9D099597685C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC565EBB-4826-424A-B8CE-9D099597685C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC565EBB-4826-424A-B8CE-9D099597685C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AE11FD2-D6DC-40C8-9F87-4175097EFA34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AE11FD2-D6DC-40C8-9F87-4175097EFA34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AE11FD2-D6DC-40C8-9F87-4175097EFA34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AE11FD2-D6DC-40C8-9F87-4175097EFA34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0824447-0B0B-4B0E-873C-14EE2BE3E50A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0824447-0B0B-4B0E-873C-14EE2BE3E50A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0824447-0B0B-4B0E-873C-14EE2BE3E50A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0824447-0B0B-4B0E-873C-14EE2BE3E50A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A124BB8-1C76-4AAB-A403-429547EB309D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A124BB8-1C76-4AAB-A403-429547EB309D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A124BB8-1C76-4AAB-A403-429547EB309D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A124BB8-1C76-4AAB-A403-429547EB309D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3F3AFB0-8F59-445D-B935-00EC51E49C08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3F3AFB0-8F59-445D-B935-00EC51E49C08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3F3AFB0-8F59-445D-B935-00EC51E49C08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3F3AFB0-8F59-445D-B935-00EC51E49C08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C89CEBC6-CD1C-4601-BEA5-9F3C6BC8D231}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C89CEBC6-CD1C-4601-BEA5-9F3C6BC8D231}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C89CEBC6-CD1C-4601-BEA5-9F3C6BC8D231}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C89CEBC6-CD1C-4601-BEA5-9F3C6BC8D231}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -73,6 +103,10 @@ Global
 		{6DF95A5F-7046-44B3-848E-B9320F3ACFEF} = {7542CF1D-BF68-4B6A-8ABB-089E7155A581}
 		{D85502F5-2F98-4DC2-993E-7D31C9E6FBFB} = {758DFD54-B049-4073-AE8E-C78100F9DC7B}
 		{FC565EBB-4826-424A-B8CE-9D099597685C} = {758DFD54-B049-4073-AE8E-C78100F9DC7B}
+		{C0824447-0B0B-4B0E-873C-14EE2BE3E50A} = {758DFD54-B049-4073-AE8E-C78100F9DC7B}
+		{0A124BB8-1C76-4AAB-A403-429547EB309D} = {7542CF1D-BF68-4B6A-8ABB-089E7155A581}
+		{B3F3AFB0-8F59-445D-B935-00EC51E49C08} = {758DFD54-B049-4073-AE8E-C78100F9DC7B}
+		{C89CEBC6-CD1C-4601-BEA5-9F3C6BC8D231} = {7542CF1D-BF68-4B6A-8ABB-089E7155A581}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F8FBEA63-E4C2-46D5-A2CD-6D91D6FED86E}

@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <ItemGroup>
+    <ProjectReference Include="..\Filebin.Common\Validation\Filebin.Common.Validation.csproj" />
+    <ProjectReference Include="..\Filebin.Common\Commands\Filebin.Common.Commands.csproj" />
+    <ProjectReference Include="..\Filebin.Domain\Azure\Blob\Abstraction\Filebin.Domain.Azure.Blob.Abstraction.csproj" />
+    <ProjectReference Include="..\Filebin.Domain\WebGallery\Filebin.Domain.WebGallery.csproj" />
+    <ProjectReference Include="..\Filebin.Common\Azure\Blob\Filebin.Common.Azure.Blob.csproj" />
+    <ProjectReference Include="..\Filebin.Domain\Auth\Models\Filebin.Domain.Auth.Models.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+</Project>
